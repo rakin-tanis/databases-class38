@@ -83,10 +83,11 @@ const SELECT_AUTHORS_WITH_PAPERS = `SELECT a.*, rp.paper_title
                                         LEFT JOIN author_research_paper arp ON a.author_no = arp.author_no
                                         LEFT JOIN research_Papers rp ON arp.paper_id = rp.paper_id;`;
 
-const SELECT_PAPERS_WITH_AUTHORS = `SELECT p.*, a.author_name
+const SELECT_PAPERS_WITH_AUTHORS = `SELECT p.paper_title, COUNT(a.author_no) as author_count
                                     FROM research_Papers p
                                         LEFT JOIN author_research_paper arp ON p.paper_id = arp.paper_id
-                                        LEFT JOIN authors a ON arp.author_no = a.author_no;`;
+                                        LEFT JOIN authors a ON arp.author_no = a.author_no
+                                    GROUP BY (p.paper_id)`;
 
 const SUM_OF_PAPERS_WRITTEN_BY_A_FEMALE = `SELECT
                                                 COUNT(DISTINCT(p.paper_id))

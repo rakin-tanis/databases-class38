@@ -70,7 +70,10 @@ export const matchAuthorsWithRandomMentors = (authorIds) => {
 };
 
 export const matchPapersWithAuthors = (paperIds, authorsIds) => {
-  const authorNoList = authorsIds.map((authorId) => authorId.author_no);
+  // this line is to guarantee that the 2 authors have no paper.
+  const authorsHavePaper = authorsIds.slice(0, authorsIds.length - 2);
+  
+  const authorNoList = authorsHavePaper.map((authorId) => authorId.author_no);
   const matchList = [];
   paperIds
     .map((paperIds) => paperIds.paper_id)
