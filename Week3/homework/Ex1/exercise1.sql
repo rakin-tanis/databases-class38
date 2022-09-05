@@ -163,7 +163,7 @@ INSERT INTO
     venues (venue_code, venue_description)
 VALUES ('B01', 'Grand Ball Room'), ('B02', 'Zoku Roof Top'), ('B03', 'Goat Farm'), ('B04', 'Mama\'s Kitchen'), ('B05', 'Hungry Hungary');
 
--- dinner table is also a joint table for venues and members, I didn't assign foreign key because of the same reason I mentioned before
+-- dinner table is also a joint table for venues
 
 CREATE TABLE
     IF NOT EXISTS dinners (
