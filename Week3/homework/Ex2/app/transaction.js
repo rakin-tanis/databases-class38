@@ -52,18 +52,6 @@ const transferMoney = async (from, to, amount, message) => {
   await depositMoney(to, amount, message);
 };
 
-export const deposit = async ({ accountNumber, amount, message }) => {
-  await transactionalQuery(
-    async () => await depositMoney(accountNumber, amount, message)
-  );
-};
-
-export const withdraw = async ({ accountNumber, amount, message }) => {
-  await transactionalQuery(
-    async () => await withdrawMoney(accountNumber, amount, message)
-  );
-};
-
 export const transfer = async ({ from, to, amount, message }) => {
   await transactionalQuery(
     async () => await transferMoney(from, to, amount, message)
